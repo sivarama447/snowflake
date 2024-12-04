@@ -14,12 +14,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-		
+
       - name: Use python 3.8.x
         uses: actions/setup-python@v2.2.1
         with:
           python-version: 3.8.x
-		  
+
       - name: Run schemachange
         env:
           SF_ACCOUNT: ${{ secrets.SF_ACCOUNT}}
