@@ -58,10 +58,6 @@ jobs:
           SF_DATABASE: ${{ secrets.SF_DATABASE }}
           SNOWFLAKE_PASSWORD: ${{ secrets.SF_PASSWORD }}
         run: |
-          echo "Current workspace contents:"
-          pwd
-          ls -R
-          echo "Running schemachange..."
           schemachange deploy \
             -f ./deploy \
             -a "$SF_ACCOUNT" \
@@ -70,5 +66,4 @@ jobs:
             -w "$SF_WAREHOUSE" \
             -d "$SF_DATABASE" \
             -c "$SF_DATABASE.SCHEMACHANGE.CHANGE_HISTORY" \
-            --create-change-history-table \
-            --password "$SNOWFLAKE_PASSWORD"
+            --create-change-history-table
