@@ -59,7 +59,8 @@ jobs:
           SNOWFLAKE_PASSWORD: ${{ secrets.SF_PASSWORD }}
         run: |
           echo "Running schemachange..."
-          schemachange -f $GITHUB_WORKSPACE/deploy \
+          schemachange deploy \
+            -f $GITHUB_WORKSPACE/deploy \
             -a "$SF_ACCOUNT" \
             -u "$SF_USERNAME" \
             -r "$SF_ROLE" \
@@ -67,4 +68,4 @@ jobs:
             -d "$SF_DATABASE" \
             -c "$SF_DATABASE.SCHEMACHANGE.CHANGE_HISTORY" \
             --create-change-history-table \
-            -p "$SNOWFLAKE_PASSWORD"
+            --password "$SNOWFLAKE_PASSWORD"
